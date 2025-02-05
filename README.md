@@ -4,16 +4,19 @@
 This project is a **Service-Oriented Architecture (SOA)** introductory application designed to manage mobile contacts. It follows a layered architecture with controllers, data access objects (DAO), data transfer objects (DTO), and exception handling.
 
 ## Features
+- Interactive **menu-based CLI** for managing contacts
 - Add new mobile contacts
 - Retrieve mobile contacts
 - Update existing contacts
+- Delete contacts
+- Search contacts
 - Handle errors with custom exceptions
 - Uses **DTO (Data Transfer Objects)** to encapsulate request and response data
 
 ## Project Structure
 ```
 /mobilecontacts
-├── Main.java                           # Entry point of the application
+├── Main.java                           # Entry point of the application, includes CLI menu
 ├── controller/
 │   ├── MobileContactController.java    # Handles API requests for contacts
 ├── core/serializer/
@@ -48,6 +51,18 @@ Ensure you have **Java 11+** installed.
 
 ## Usage
 
+### Interactive CLI Menu
+When you run the application, you will be presented with a **menu** where you can perform the following operations:
+```
+1. Add Contact
+2. Update Contact
+3. Delete Contact
+4. Search Contact
+5. Show All Contacts
+6. Exit
+```
+Simply enter the corresponding number to perform an action.
+
 ### Add a Mobile Contact
 To insert a new contact, use the `MobileContactInsertDTO`:
 ```java
@@ -67,6 +82,12 @@ To update an existing contact:
 ```java
 MobileContactUpdateDTO updatedContact = new MobileContactUpdateDTO(1, "John Smith", "0987654321");
 mobileContactController.updateContact(updatedContact);
+```
+
+### Delete a Contact
+To delete a contact:
+```java
+mobileContactController.deleteContact(1);
 ```
 
 ### Error Handling
